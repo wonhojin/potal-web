@@ -30,10 +30,13 @@ public class UserDaoTests {
         String name = "원호진";
         String password = "1111";
 
+        DaoFactory daoFactory = new DaoFactory();
+        UserDao userDao = daoFactory.getUserDao();
+
         User user = new User();
         user.setName(name);
         user.setPassword(password);
-        UserDao userDao = new UserDao(new JejuConnectionMaker());
+   //     UserDao userDao = new UserDao(new JejuConnectionMaker());
         userDao.insert(user);
 
         User insertedUser = userDao.findById(user.getId());
