@@ -11,7 +11,7 @@ public class UserDao {
     }
 
     public User findById(Integer id) throws SQLException {
-        //데이터 어딨어? => mysql
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -50,7 +50,7 @@ public class UserDao {
     }
 
     public void insert(User user) throws SQLException {
-        //데이터 어딨어? => mysql
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {

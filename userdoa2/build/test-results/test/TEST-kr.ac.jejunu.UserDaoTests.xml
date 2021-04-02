@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="kr.ac.jejunu.UserDaoTests" tests="4" skipped="0" failures="1" errors="0" timestamp="2021-04-02T09:15:58" hostname="DESKTOP-UGF9O8T" time="1.199">
+<testsuite name="kr.ac.jejunu.UserDaoTests" tests="4" skipped="0" failures="1" errors="0" timestamp="2021-04-02T09:16:29" hostname="DESKTOP-UGF9O8T" time="1.266">
   <properties/>
-  <testcase name="delete()" classname="kr.ac.jejunu.UserDaoTests" time="1.114"/>
-  <testcase name="insert()" classname="kr.ac.jejunu.UserDaoTests" time="0.028"/>
-  <testcase name="update()" classname="kr.ac.jejunu.UserDaoTests" time="0.04"/>
-  <testcase name="get()" classname="kr.ac.jejunu.UserDaoTests" time="0.014">
+  <testcase name="delete()" classname="kr.ac.jejunu.UserDaoTests" time="1.175"/>
+  <testcase name="insert()" classname="kr.ac.jejunu.UserDaoTests" time="0.03"/>
+  <testcase name="update()" classname="kr.ac.jejunu.UserDaoTests" time="0.041"/>
+  <testcase name="get()" classname="kr.ac.jejunu.UserDaoTests" time="0.018">
     <failure message="java.lang.AssertionError: &#13;&#10;Expected: is &quot;hulk&quot;&#13;&#10;     but: was &quot;�뿀�쑄�샇&quot;" type="java.lang.AssertionError">java.lang.AssertionError: 
 Expected: is &quot;hulk&quot;
      but: was &quot;�뿀�쑄�샇&quot;
