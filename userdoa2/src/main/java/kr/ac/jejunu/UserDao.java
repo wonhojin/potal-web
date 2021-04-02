@@ -84,7 +84,7 @@ public class UserDao {
     }
 
     public void update(User user) throws SQLException {
-        //데이터 어딨어? => mysql
+
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         try {
