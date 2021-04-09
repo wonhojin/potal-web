@@ -37,7 +37,7 @@ public class UserDaoTests {
     @Test
     public void insert() throws SQLException, ClassNotFoundException {
 
-        String name = "허윤호";
+        String name = "wonhojin";
         String password = "1111";
 
         User user = new User();
@@ -55,7 +55,7 @@ public class UserDaoTests {
 
     @Test
     public void update() throws SQLException {
-        String name = "허윤호";
+        String name = "wonhojin";
         String password = "1111";
 
         User user = new User();
@@ -78,7 +78,7 @@ public class UserDaoTests {
 
     @Test
     public void delete() throws SQLException {
-        String name = "허윤호";
+        String name = "wonhojin";
         String password = "1111";
 
         User user = new User();
@@ -109,7 +109,7 @@ public class UserDaoTests {
 //
 //    @Test
 //    public void insertHalla() throws SQLException, ClassNotFoundException {
-//        String name = "허윤호";
+//        String name = "wonhojin";
 //        String password = "1111";
 //
 //        User user = new User();
