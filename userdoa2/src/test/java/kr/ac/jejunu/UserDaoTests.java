@@ -30,7 +30,7 @@ public class UserDaoTests {
     public static void setup() throws ClassNotFoundException {
 
         ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("dataFactory.xml");
+                new ClassPathXmlApplicationContext("daoFactory.xml");
 //        StaticApplicationContext applicationContext =
 //                new StaticApplicationContext();
 //        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
