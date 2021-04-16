@@ -1,10 +1,20 @@
 
 package kr.ac.jejunu;
 
+import com.sun.xml.internal.bind.v2.model.runtime.RuntimeNonElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.RuntimeBeanNameReference;
+import org.springframework.beans.factory.config.RuntimeBeanReference;
+import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ClassPathBeanDefinitionScanner;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.StaticApplicationContext;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.SimpleDriverDataSource;
 
 import java.sql.SQLException;
 
@@ -17,9 +27,66 @@ public class UserDaoTests {
     static UserDao userDao;
 
     @BeforeAll
-    public static void setup() {
-        ApplicationContext applicationContext
-                = new AnnotationConfigApplicationContext(DaoFactory.class);
+    public static void setup() throws ClassNotFoundException {
+
+        ClassPathXmlApplicationContext applicationContext =
+                new ClassPathXmlApplicationContext("dataFactory.xml");
+//        StaticApplicationContext applicationContext =
+//                new StaticApplicationContext();
+//        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
+//        dataBeanDefinition.getPropertyValues().addPropertyValue("driverClass", Class.forName(System.getenv("DB_DRIVER")));
+//        dataBeanDefinition.getPropertyValues().addPropertyValue("username", System.getenv("DB_USERNAME"));
+//        dataBeanDefinition.getPropertyValues().addPropertyValue("password", System.getenv("DB_PASSWORD"));
+//        dataBeanDefinition.getPropertyValues().addPropertyValue("url", System.getenv("DB_URL"));
+//
+//        applicationContext.registerBeanDefinition("dataSource", dataBeanDefinition);
+//        BeanDefinition jdbcBeanDefinition = new RootBeanDefinition(JdbcTemplate.class);
+//        jdbcBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
+//                new RuntimeBeanReference("dataSource")
+//        );
+//        applicationContext.registerBeanDefinition("dataSource", dataBeanDefinition);
+//        BeanDefinition userDaoBeanDefinition = new RootBeanDefinition(UserDao.class);
+//        userDaoBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
+//                new RuntimeBeanReference("jdbcTemplate")
+//        );
+//        applicationContext.registerBeanDefinition(userDao, userDaoBeanDefinition);
+
+//        ApplicationContext applicationContext
+//                = new AnnotationConfigApplicationContext(DaoFactory.class);
+
+
+
+        //        StaticApplicationContext applicationContext =
+//                new StaticApplicationContext();
+//        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
+//        dataBeanDefinition.getPropertyValues()
+//                .addPropertyValue("driverClass"
+//                        , Class.forName(System.getenv("DB_DRIVER")));
+//        dataBeanDefinition.getPropertyValues()
+//                .addPropertyValue("username"
+//                        , System.getenv("DB_USERNAME"));
+//        dataBeanDefinition.getPropertyValues()
+//                .addPropertyValue("password"
+//                        , System.getenv("DB_PASSWORD"));
+//        dataBeanDefinition.getPropertyValues()
+//                .addPropertyValue("url"
+//                        , System.getenv("DB_URL"));
+//
+//
+//
+//        applicationContext.registerBeanDefinition("dataSource", dataBeanDefinition);
+//        BeanDefinition jdbcBeanDefinition = new RootBeanDefinition(JdbcTemplate.class);
+//        jdbcBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
+//                new RuntimeBeanReference("dataSource")
+//        );
+//        applicationContext.registerBeanDefinition("jdbcTemplate", jdbcBeanDefinition);
+//        BeanDefinition userDaoBeanDefinition = new RootBeanDefinition(UserDao.class);
+//        userDaoBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
+//                new RuntimeBeanReference("jdbcTemplate")
+//        );
+//        applicationContext.registerBeanDefinition("userDao", userDaoBeanDefinition);
+//        ApplicationContext applicationContext
+//                = new AnnotationConfigApplicationContext(DaoFactory.class);
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
 
