@@ -1,4 +1,3 @@
-
 package kr.ac.jejunu;
 
 import org.junit.jupiter.api.BeforeAll;
@@ -25,35 +24,9 @@ public class UserDaoTests {
 
     @BeforeAll
     public static void setup() throws ClassNotFoundException {
-
-        ClassPathXmlApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("daoFactory.xml");
+//        ClassPathXmlApplicationContext applicationContext =
+//                new ClassPathXmlApplicationContext("daoFactory.xml");
 //        StaticApplicationContext applicationContext =
-//                new StaticApplicationContext();
-//        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
-//        dataBeanDefinition.getPropertyValues().addPropertyValue("driverClass", Class.forName(System.getenv("DB_DRIVER")));
-//        dataBeanDefinition.getPropertyValues().addPropertyValue("username", System.getenv("DB_USERNAME"));
-//        dataBeanDefinition.getPropertyValues().addPropertyValue("password", System.getenv("DB_PASSWORD"));
-//        dataBeanDefinition.getPropertyValues().addPropertyValue("url", System.getenv("DB_URL"));
-//
-//        applicationContext.registerBeanDefinition("dataSource", dataBeanDefinition);
-//        BeanDefinition jdbcBeanDefinition = new RootBeanDefinition(JdbcTemplate.class);
-//        jdbcBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
-//                new RuntimeBeanReference("dataSource")
-//        );
-//        applicationContext.registerBeanDefinition("dataSource", dataBeanDefinition);
-//        BeanDefinition userDaoBeanDefinition = new RootBeanDefinition(UserDao.class);
-//        userDaoBeanDefinition.getConstructorArgumentValues().addGenericArgumentValue(
-//                new RuntimeBeanReference("jdbcTemplate")
-//        );
-//        applicationContext.registerBeanDefinition(userDao, userDaoBeanDefinition);
-
-//        ApplicationContext applicationContext
-//                = new AnnotationConfigApplicationContext(DaoFactory.class);
-
-
-
-        //        StaticApplicationContext applicationContext =
 //                new StaticApplicationContext();
 //        BeanDefinition dataBeanDefinition = new RootBeanDefinition(SimpleDriverDataSource.class);
 //        dataBeanDefinition.getPropertyValues()
@@ -82,8 +55,8 @@ public class UserDaoTests {
 //                new RuntimeBeanReference("jdbcTemplate")
 //        );
 //        applicationContext.registerBeanDefinition("userDao", userDaoBeanDefinition);
-//        ApplicationContext applicationContext
-//                = new AnnotationConfigApplicationContext(DaoFactory.class);
+        ApplicationContext applicationContext
+                = new AnnotationConfigApplicationContext("kr.ac.jejunu");
         userDao = applicationContext.getBean("userDao", UserDao.class);
     }
 
@@ -92,6 +65,8 @@ public class UserDaoTests {
         Integer id = 1;
         String name = "hulk";
         String password = "1234";
+//        DaoFactory daoFactory = new DaoFactory();
+//        UserDao userDao = daoFactory.getUserDao();
         User user = userDao.findById(id);
         assertThat(user.getId(), is(id));
         assertThat(user.getName(), is(name));
@@ -100,13 +75,10 @@ public class UserDaoTests {
 
     @Test
     public void insert() throws SQLException, ClassNotFoundException {
-
-        String name = "허윤호";
+        String name = "won";
         String password = "1111";
 
-        User user = new User();
-        user.setName(name);
-        user.setPassword(password);
+        User user = User.builder().name(name).password(password).build();
         userDao.insert(user);
 
         User insertedUser = userDao.findById(user.getId());
@@ -119,13 +91,17 @@ public class UserDaoTests {
 
     @Test
     public void update() throws SQLException {
-        String name = "허윤호";
+        String name = "won";
         String password = "1111";
 
         User user = new User();
         user.setName(name);
         user.setPassword(password);
         userDao.insert(user);
+
+        System.out.println("*****************");
+        System.out.println(user);
+        System.out.println("*****************");
 
         user.setName("hulk");
         user.setPassword("1234");
@@ -139,10 +115,9 @@ public class UserDaoTests {
         assertThat(updatedUser.getPassword(), is(user.getPassword()));
     }
 
-
     @Test
     public void delete() throws SQLException {
-        String name = "허윤호";
+        String name = "won";
         String password = "1111";
 
         User user = new User();
@@ -156,6 +131,7 @@ public class UserDaoTests {
 
         assertThat(deletedUser, nullValue());
     }
+}
 
 //
 //    @Test
@@ -173,7 +149,7 @@ public class UserDaoTests {
 //
 //    @Test
 //    public void insertHalla() throws SQLException, ClassNotFoundException {
-//        String name = "허윤호";
+//        String name = "won";
 //        String password = "1111";
 //
 //        User user = new User();
@@ -190,5 +166,3 @@ public class UserDaoTests {
 //        assertThat(insertedUser.getPassword(), is(user.getPassword()));
 //    }
 //
-
-}

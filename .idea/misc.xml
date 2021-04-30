@@ -5,4 +5,5 @@
     <file type="web" url="file://$PROJECT_DIR$/userdoa2" />
     <type id="Spring" />
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
 </project>
