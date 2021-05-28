@@ -36,8 +36,8 @@ public class DaoFactory {
         SimpleDriverDataSource dataSource =
                 new SimpleDriverDataSource();
 //        className = "com.mysql.cj.jdbc.Driver";
-//        password = "jejupw";
-//        username = "jeju";
+//        password = "123123";
+//        username = "root";
 //        url = "jdbc:mysql://localhost/jeju?characterEncoding=utf-8&serverTimezone=UTC";
         dataSource.setDriverClass((Class<? extends Driver>) Class.forName(className));
         dataSource.setUsername(username);
